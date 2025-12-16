@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио Ирина Опольская</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;500;600&family=Alegreya:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script src="tailwind.config.js"></script>
+    <script src="package.json"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body class="font-alegreya text-dark-brown bg-beige">
+    
+ <!-- Бургер-меню для мобильных -->
+<div class="lg:hidden">
+    <!-- Burger Button (слева с иконкой) -->
+    <button id="burger-btn" class="fixed top-6 left-6 z-50 w-14 h-14 flex flex-col justify-center items-center gap-1.5 rounded-full bg-dark-brown/95 backdrop-blur-sm shadow-2xl hover:bg-accent hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 group">
+        <!-- Внешнее кольцо для лучшей видимости -->
+        <div class="absolute inset-0 rounded-full border-2 border-beige/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+        
+        <!-- Анимированные линии -->
+        <span class="burger-line w-6 h-0.5 bg-beige rounded-full transform transition-all duration-300 group-hover:bg-white"></span>
+        <span class="burger-line w-6 h-0.5 bg-beige rounded-full transform transition-all duration-300 group-hover:bg-white"></span>
+        <span class="burger-line w-6 h-0.5 bg-beige rounded-full transform transition-all duration-300 group-hover:bg-white"></span>
+        
+        <!-- Текстовый хинт (виден только при наведении) -->
+        <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-dark-brown/90 text-beige text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            Меню
+        </div>
+    </button>
+    
+    <!-- Mobile Menu (открывается справа) -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-dark-brown/97 backdrop-blur-lg transform translate-x-full transition-transform duration-500 ease-out">
+        <div class="h-full flex flex-col pt-24 px-6">
+            <!-- Close Button (справа с иконкой) -->
+            <button id="close-menu" class="absolute top-6 right-6 w-14 h-14 flex items-center justify-center text-beige text-2xl hover:text-accent hover:scale-110 transition-all duration-300 focus:outline-none group">
+                <i class="fas fa-times"></i>
+                <!-- Текстовый хинт -->
+                <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-dark-brown/90 text-beige text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    Закрыть
+                </div>
+            </button>
+            
+            <!-- Navigation -->
+            <nav class="space-y-4">
+                <a href="#hero" class="mobile-link flex items-center text-2xl text-beige hover:text-accent py-5 border-b border-beige/20 transition-all duration-300 group pl-2">
+                    <div class="w-10 h-10 rounded-full bg-beige/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="ml-5">Главная</span>
+                    <i class="fas fa-chevron-right ml-auto text-beige/40 group-hover:text-accent transition-all duration-300"></i>
+                </a>
+                
+                <a href="#skills" class="mobile-link flex items-center text-2xl text-beige hover:text-accent py-5 border-b border-beige/20 transition-all duration-300 group pl-2">
+                    <div class="w-10 h-10 rounded-full bg-beige/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="ml-5">Навыки</span>
+                    <i class="fas fa-chevron-right ml-auto text-beige/40 group-hover:text-accent transition-all duration-300"></i>
+                </a>
+                
+                <a href="#works" class="mobile-link flex items-center text-2xl text-beige hover:text-accent py-5 border-b border-beige/20 transition-all duration-300 group pl-2">
+                    <div class="w-10 h-10 rounded-full bg-beige/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="ml-5">Работы</span>
+                    <i class="fas fa-chevron-right ml-auto text-beige/40 group-hover:text-accent transition-all duration-300"></i>
+                </a>
+                
+                <a href="#contacts" class="mobile-link flex items-center text-2xl text-beige hover:text-accent py-5 border-b border-beige/20 transition-all duration-300 group pl-2">
+                    <div class="w-10 h-10 rounded-full bg-beige/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="ml-5">Контакты</span>
+                    <i class="fas fa-chevron-right ml-auto text-beige/40 group-hover:text-accent transition-all duration-300"></i>
+                </a>
+            </nav>
+            
+            <!-- Social Links -->
+            <div class="mt-auto pb-12 flex justify-center gap-6">
+                <a href="https://vk.com/irinaopolskaya" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-beige/10 text-beige hover:bg-accent hover:text-white hover:scale-110 transition-all duration-300 group relative">
+                    <i class="fab fa-vk text-xl"></i>
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-dark-brown/90 text-beige text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                        ВКонтакте
+                    </div>
+                </a>
+                <a href="https://t.me/iraopolskaya" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-beige/10 text-beige hover:bg-accent hover:text-white hover:scale-110 transition-all duration-300 group relative">
+                    <i class="fab fa-telegram text-xl"></i>
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-dark-brown/90 text-beige text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                        Telegram
+                    </div>
+                </a>
+                <a href="mailto:opolskaya17@mail.ru" class="w-12 h-12 flex items-center justify-center rounded-full bg-beige/10 text-beige hover:bg-accent hover:text-white hover:scale-110 transition-all duration-300 group relative">
+                    <i class="fas fa-envelope text-xl"></i>
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-dark-brown/90 text-beige text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                        Email
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Footer Info -->
+            <div class="text-center py-6 border-t border-beige/20">
+                <p class="text-beige/80 font-source-serif text-lg">Ирина Опольская</p>
+                <p class="text-beige/60 text-sm mt-1">Дизайнер • Аниматор</p>
+            </div>
+        </div>
+    </div>
+</div>> 
+
+</style>
+    <!-- Header Banner -->
+    <header class="relative py-8 border-b-2 border-dark-brown">
+        <div class="h-[10px] bg-dark-brown absolute top-0 left-0 w-full"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative w-full max-w-4xl h-[400px] sm:h-[500px] mx-auto mb-8 rounded-xl overflow-hidden shadow-lg animate-fade-in">
+                <img src="images/Frame 9.png" alt="Фон логотипа" class="w-full h-full object-cover absolute top-0 left-0">
+                <div class="relative z-10 w-full h-full flex flex-col justify-center items-center p-5">
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex justify-center gap-6 sm:gap-12 flex-wrap bg-beige/85 px-4 sm:px-6 py-3 sm:py-4 rounded-[60px] backdrop-blur-sm shadow-lg">
+                        <a href="#hero" class="px-6 py-3 rounded-full border-2 border-dark-brown bg-dark-brown text-beige font-alegreya text-lg transition-all duration-300 hover:bg-accent-light hover:border-accent-light hover:text-white hover:-translate-y-0.5">Главная</a>
+                        <a href="#skills" class="px-6 py-3 rounded-full border-2 border-dark-brown font-alegreya text-lg transition-all duration-300 hover:bg-accent-light hover:border-accent-light hover:text-white hover:-translate-y-0.5">Навыки</a>
+                        <a href="#works" class="px-6 py-3 rounded-full border-2 border-dark-brown font-alegreya text-lg transition-all duration-300 hover:bg-accent-light hover:border-accent-light hover:text-white hover:-translate-y-0.5">Работы</a>
+                        <a href="#contacts" class="px-6 py-3 rounded-full border-2 border-dark-brown font-alegreya text-lg transition-all duration-300 hover:bg-accent-light hover:border-accent-light hover:text-white hover:-translate-y-0.5">Контакты</a>
+                    </div>
+                    
+                    <!-- Mobile Title -->
+                    <div class="lg:hidden text-center bg-beige/85 px-6 py-4 rounded-2xl backdrop-blur-sm shadow-lg">
+                        <h1 class="font-source-serif text-2xl sm:text-3xl text-dark-brown mb-2">ИРИНА ОПОЛЬСКАЯ</h1>
+                        <p class="text-dark-brown font-medium">Дизайнер • Аниматор</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-[10px] bg-dark-brown absolute bottom-0 left-0 w-full"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="py-12 sm:py-20 bg-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="animate-fade-in">
+                <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
+                    <!-- Photo -->
+                    <div class="w-full lg:w-1/3 lg:max-w-[400px] mx-auto order-2 lg:order-1">
+                        <div class="w-full h-[300px] sm:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-2xl">
+                            <img src="images/Frame 8.png" alt="Фото Ирины Опольской" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Text -->
+                    <div class="w-full lg:w-2/3 mt-8 lg:mt-0 order-1 lg:order-2">
+                        <h1 class="font-source-serif text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-normal text-dark-brown leading-none mb-4 lg:mb-5 text-center lg:text-right">ИРИНА ОПОЛЬСКАЯ</h1>
+                        <div class="h-[3px] w-32 sm:w-48 bg-accent my-6 lg:my-8 mx-auto lg:ml-auto lg:mr-0"></div>
+                        <h2 class="font-source-serif text-2xl sm:text-3xl lg:text-5xl xl:text-6xl text-accent text-center lg:text-right font-normal mb-2">ДИПЛОМ</h2>
+                        <p class="font-alegreya text-lg sm:text-xl lg:text-3xl text-medium-brown text-center lg:text-right italic mb-6 lg:mb-8">О среднем профессиональном образовании</p>
+                        <p class="text-base sm:text-lg lg:text-2xl text-dark-brown leading-relaxed mt-6 lg:mt-10 pl-4 lg:pl-6 border-l-4 border-accent max-w-4xl mx-auto lg:mx-0">
+                            Создаю визуальные концепции, где типографика и цвет оживают в движении. Превращаю идеи в цифровое искусство. 
+                            Специализируюсь на дизайне, анимации и создании уникальных визуальных решений для брендов и проектов.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-12 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-source-serif text-3xl sm:text-4xl lg:text-5xl text-accent mb-8 sm:mb-16 relative text-center animate-fade-in">
+            ПРОФЕССИОНАЛЬНЫЕ НАВЫКИ
+            <div class="absolute bottom-[-12px] sm:bottom-[-15px] left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-[3px] bg-accent"></div>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
+            <!-- Adobe Photoshop - 3/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fas fa-paint-brush"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">Adobe Photoshop</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">Создание графики и ретушь</p>
+            </div>
+            
+            <!-- Figma - 4/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fab fa-figma"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">Figma</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">UI/UX дизайн и веб-дизайн</p>
+            </div>
+            
+            <!-- Adobe Animate - 2/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fas fa-film"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">Adobe Animate</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">Векторная анимация и интерактивный контент</p>
+            </div>
+            
+            <!-- Adobe Illustrator - 2/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fas fa-pen-nib"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">Adobe Illustrator</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">Векторная графика логотипы и иллюстрации</p>
+            </div>
+            
+            <!-- After Effects - 3/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fas fa-video"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">After Effects</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">Моушн-дизайн и визуальные эффекты</p>
+            </div>
+            
+            <!-- Adobe Premiere - 3/5 -->
+            <div class="skill-card bg-medium-brown/30 rounded-2xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl flex flex-col items-center text-center h-full animate-fade-in">
+                <div class="text-[40px] mb-5 text-dark-brown"><i class="fas fa-cut"></i></div>
+                <h3 class="font-sans text-xl sm:text-2xl font-light mb-4 text-dark-brown">Adobe Premiere</h3>
+                <div class="flex justify-center gap-2 mb-5">
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-filled"></div>
+                    <div class="dot-empty"></div>
+                    <div class="dot-empty"></div>
+                </div>
+                <p class="text-sm sm:text-base text-dark-brown/90 mt-4">Видеомонтаж и пост-продакшн</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+.dot-filled {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #4C463A;
+    background-color: #4C463A;
+}
+
+.dot-empty {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #4C463A;
+    background-color: transparent;
+}
+</style>
+
+
+</style>
+
+    <!-- Works Section -->
+    <section id="works" class="py-12 sm:py-20 bg-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-source-serif text-3xl sm:text-4xl lg:text-5xl text-accent mb-8 sm:mb-12 relative text-center animate-fade-in">
+                МОИ РАБОТЫ
+                <div class="absolute bottom-[-12px] sm:bottom-[-15px] left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-[3px] bg-accent"></div>
+            </h2>
+            
+            <!-- Works Container -->
+            <div class="relative mb-8">
+                <!-- Navigation Buttons -->
+                <button id="scroll-left" class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-dark-brown/80 text-beige items-center justify-center shadow-lg hover:bg-accent hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                
+                <button id="scroll-right" class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-dark-brown/80 text-beige items-center justify-center shadow-lg hover:bg-accent hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+                
+                <!-- Horizontal Scroll Container -->
+                <div id="works-scroll" class="flex overflow-x-auto pb-8 px-4 sm:px-8 gap-6 sm:gap-8 scroll-smooth snap-x snap-mandatory">
+                   <!-- Work Item 1: Веб-дизайн с Frame 12 -->
+    <div class="min-w-[280px] sm:min-w-[320px] lg:min-w-[380px] flex-shrink-0 snap-center animate-fade-in">
+    <div class="work-card h-[400px] rounded-2xl overflow-hidden shadow-xl relative group cursor-pointer">
+        <!-- Картинка Frame 12 на бежевом фоне -->
+        <div class="absolute inset-0 bg-beige flex items-center justify-center p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <!-- Картинка Frame 12 -->
+                <img src="images/Frame 12.jpg" alt="Веб-дизайн Frame 12" 
+                     class="max-w-[100%] max-h-[100%] object-contain">
+                <!-- Заглушка если картинка не загрузится -->
+                <div class="absolute inset-0 bg-beige flex items-center justify-center" style="display: none;">
+                    <div class="text-center">
+                        <div class="text-4xl text-dark-brown/50 mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-4 left-4 bg-white/90 text-dark-brown px-3 py-1.5 rounded-full text-sm font-medium z-10">Типографика</div>
+        <div class="work-overlay absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-brown/95 to-transparent text-white">
+            <p class="text-sm opacity-90 mb-3">Постер дизайн для музыкальной группы</p>
+            <div class="flex gap-2 flex-wrap">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs">Figma</span>
+    
+            </div>
+        </div>
+    </div>
+</div>
+                    <div class="min-w-[280px] sm:min-w-[320px] lg:min-w-[380px] flex-shrink-0 snap-center animate-fade-in">
+    <div class="work-card h-[400px] rounded-2xl overflow-hidden shadow-xl relative group cursor-pointer">
+        <!-- Картинка Group 6 на бежевом фоне -->
+        <div class="absolute inset-0 bg-beige flex items-center justify-center p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <!-- Картинка Group 6 -->
+                <img src="images/Group 6.png" alt="Веб-дизайн Group 6" 
+                     class="max-w-[100%] max-h-[100%] object-contain">
+                <!-- Заглушка если картинка не загрузится -->
+                <div class="absolute inset-0 bg-beige flex items-center justify-center" style="display: none;">
+                    <div class="text-center">
+                        <div class="text-4xl text-dark-brown/50 mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <p class="text-dark-brown/70 font-medium">Group 6</p>
+                        <p class="text-dark-brown/50 text-sm mt-1">Веб-дизайн проект</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-4 left-4 bg-white/90 text-dark-brown px-3 py-1.5 rounded-full text-sm font-medium z-10">Типографика</div>
+        <div class="work-overlay absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-brown/95 to-transparent text-white">
+            <p class="text-sm opacity-90 mb-3">Постер дизайн для музыкального фестиваля</p>
+            <div class="flex gap-2 flex-wrap">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs">Figma</span>
+    
+            </div>
+        </div>
+    </div>
+</div>
+<div class="min-w-[280px] sm:min-w-[320px] lg:min-w-[380px] flex-shrink-0 snap-center animate-fade-in">
+    <div class="work-card h-[400px] rounded-2xl overflow-hidden shadow-xl relative group cursor-pointer">
+        <!-- Картинка Frame 11 на бежевом фоне -->
+        <div class="absolute inset-0 bg-beige flex items-center justify-center p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <!-- Картинка Frame 11 -->
+                <img src="images/Frame 11.jpg" alt="Веб-дизайн Frame 11" 
+                     class="max-w-[100%] max-h-[100%] object-contain">
+                <!-- Заглушка если картинка не загрузится -->
+                <div class="absolute inset-0 bg-beige flex items-center justify-center" style="display: none;">
+                    <div class="text-center">
+                        <div class="text-4xl text-dark-brown/50 mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-4 left-4 bg-white/90 text-dark-brown px-3 py-1.5 rounded-full text-sm font-medium z-10">Цветоведение</div>
+        <div class="work-overlay absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-brown/95 to-transparent text-white">
+            <p class="text-sm opacity-90 mb-3">Постер</p>
+            <div class="flex gap-2 flex-wrap">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs">Figma</span>
+    
+            </div>
+        </div>
+    </div>
+</div>
+<div class="min-w-[280px] sm:min-w-[320px] lg:min-w-[380px] flex-shrink-0 snap-center animate-fade-in">
+    <div class="work-card h-[400px] rounded-2xl overflow-hidden shadow-xl relative group cursor-pointer">
+        <!-- Картинка Frame 10 на бежевом фоне -->
+        <div class="absolute inset-0 bg-beige flex items-center justify-center p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <!-- Картинка Frame 10 -->
+                <img src="images/Frame 10.jpg" alt="Веб-дизайн Group 6" 
+                     class="max-w-[100%] max-h-[100%] object-contain">
+                <!-- Заглушка если картинка не загрузится -->
+                <div class="absolute inset-0 bg-beige flex items-center justify-center" style="display: none;">
+                    <div class="text-center">
+                        <div class="text-4xl text-dark-brown/50 mb-3">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-4 left-4 bg-white/90 text-dark-brown px-3 py-1.5 rounded-full text-sm font-medium z-10">Рисунок</div>
+        <div class="work-overlay absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-brown/95 to-transparent text-white">
+            <p class="text-sm opacity-90 mb-3">Рисунок для росписи стены</p>
+            <div class="flex gap-2 flex-wrap">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs">Figma</span>
+    
+            </div>
+        </div>
+    </div>
+</div>
+                     <!-- Scroll Indicators -->
+            <div class="flex justify-center gap-2 mt-6">
+                <div class="scroll-indicator w-3 h-3 rounded-full bg-accent/30 active"></div>
+                <div class="scroll-indicator w-3 h-3 rounded-full bg-accent/30"></div>
+                <div class="scroll-indicator w-3 h-3 rounded-full bg-accent/30"></div>
+                <div class="scroll-indicator w-3 h-3 rounded-full bg-accent/30"></div>
+            </div>
+            
+            <!-- Scroll Hint -->
+            <div class="text-center mt-8 text-medium-brown text-sm">
+                <p class="inline-flex items-center gap-2">
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="py-12 sm:py-20 bg-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-source-serif text-3xl sm:text-4xl lg:text-5xl text-accent mb-8 sm:mb-16 relative text-center animate-fade-in">
+                КОНТАКТЫ
+                <div class="absolute bottom-[-12px] sm:bottom-[-15px] left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-[3px] bg-accent"></div>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
+                <!-- Contact Cards -->
+                <div class="bg-medium-brown/20 rounded-2xl p-6 shadow-md transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl border border-dark-brown/10 animate-fade-in flex flex-col h-full">
+                    <div class="mb-5">
+                        <h3 class="font-source-serif text-2xl text-dark-brown">Telegram</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <a href="https://t.me/iraopolskaya" class="block mb-3" target="_blank">
+                            <span class="text-xl font-medium text-dark-brown mb-1 block">@irinaopolskaya</span>
+                            <span class="text-base text-accent italic">Написать в Telegram →</span>
+                        </a>
+                        <p class="text-base text-dark-brown/80 leading-relaxed mt-3">Быстрый способ связаться для обсуждения проектов</p>
+                    </div>
+                </div>
+                
+                <div class="bg-medium-brown/20 rounded-2xl p-6 shadow-md transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl border border-dark-brown/10 animate-fade-in flex flex-col h-full">
+                    <div class="mb-5">
+                        <h3 class="font-source-serif text-2xl text-dark-brown">ВКонтакте</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <a href="https://vk.com/irinaopolskaya" class="block mb-3" target="_blank">
+                            <span class="text-xl font-medium text-dark-brown mb-1 block">@iraopolskaya</span>
+                            <span class="text-base text-accent italic">Перейти в профиль →</span>
+                        </a>
+                        <p class="text-base text-dark-brown/80 leading-relaxed mt-3">Портфолио и последние работы</p>
+                    </div>
+                </div>
+                
+                <div class="bg-medium-brown/20 rounded-2xl p-6 shadow-md transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl border border-dark-brown/10 animate-fade-in flex flex-col h-full">
+                    <div class="mb-5">
+                        <h3 class="font-source-serif text-2xl text-dark-brown">Email</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <a href="mailto:opolskaya17@mail.ru" class="block mb-3">
+                            <span class="text-xl font-medium text-dark-brown mb-1 block">opolskaya17@mail.ru</span>
+                            <span class="text-base text-accent italic">Написать письмо →</span>
+                        </a>
+                        <p class="text-base text-dark-brown/80 leading-relaxed mt-3">Для официальных предложений и документов</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-accent/10 border border-accent rounded-2xl p-8 mb-10 shadow-md animate-fade-in text-center">
+                <h3 class="font-source-serif text-3xl text-dark-brown mb-4">Открыта для новых проектов и сотрудничества</h3>
+                <p class="text-lg text-medium-brown mb-8 max-w-3xl mx-auto">Готова обсудить ваш проект и предложить креативные решения</p>
+                <div class="text-center">
+                    <button id="contact-btn" class="px-8 py-4 rounded-full border-2 border-accent text-accent font-source-serif text-lg uppercase tracking-wider transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-1 hover:shadow-md">
+                        Связаться со мной
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-brown text-beige py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-10">
+                <div class="hidden lg:flex flex-wrap justify-center gap-5">
+                    <a href="#" class="px-5 py-2.5 rounded-full border-2 border-beige font-source-serif text-base uppercase transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1">Главная</a>
+                    <a href="#skills" class="px-5 py-2.5 rounded-full border-2 border-beige font-source-serif text-base uppercase transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1">Навыки</a>
+                    <a href="#works" class="px-5 py-2.5 rounded-full border-2 border-beige font-source-serif text-base uppercase transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1">Работы</a>
+                    <a href="#contacts" class="px-5 py-2.5 rounded-full border-2 border-beige font-source-serif text-base uppercase transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1">Контакты</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://vk.com/irinaopolskaya" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-beige text-lg transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1.5" target="_blank"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/iraopolskaya" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-beige text-lg transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1.5" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="mailto:opolskaya17@mail.ru" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-beige text-lg transition-all duration-300 hover:bg-beige hover:text-dark-brown hover:-translate-y-1.5"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <p class="text-center text-sm opacity-80 pt-8 border-t border-beige/20" id="copyright">
+                © 2024 Портфолио Ирина Опольская. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div id="work-modal" class="hidden fixed inset-0 bg-black/80 justify-center items-center p-5 z-[1000]">
+        <div class="bg-light-beige rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto relative p-8">
+            <button id="close-modal" class="absolute top-4 right-4 text-3xl text-dark-brown w-10 h-10 flex items-center justify-center hover:text-accent transition-colors duration-300">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

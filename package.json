@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-irina-opolskaya",
+  "version": "1.0.0",
+  "description": "Портфолио Ирина Опольская",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'Static site - no build required'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
